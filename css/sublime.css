@@ -1,0 +1,8 @@
+#output-canvas .canvas {background-color:#272822; padding: 5px; font-family: "bitstream vera sans mono",monaco,"lucida console","courier new",courier,serif;}
+#output-canvas .canvas div {margin-left: 30px;}
+#output-canvas .operators {color: #F8F8F2}
+#output-canvas .node-name {color: #F92672}
+#output-canvas .node-value {color: #F8F8F2}
+#output-canvas .attr-name {color: #A6E22E}
+#output-canvas .attr-value {color: #E6DB74}
+
