@@ -36,8 +36,6 @@
 		<cfset var str = {}>
 		<cfset var node_path = "">
 		<cfset var event = "">
-		<cfset var node_attributes = []>
-		<cfset var tempstr = {}>
 
 		<!--- If there is another element (a start node, characters or an end node) then process it. --->
 		<cfloop condition="#reader.hasNext()#">
@@ -56,18 +54,15 @@
 				<cfset str["node_record"] = false>
 				<cfset str["node_name"] = reader.getLocalName()>
 				<cfset str["node_path"] = node_path>
-				<cfset node_attributes = {}>
+				<cfset str["node_attributes"] = {}>
 
 				<!--- Get all the attributes for the current START_ELEMENT --->
 				<cfset HowManyAttributes = reader.getAttributeCount()>
 				<cfif HowManyAttributes gt 0>
 					<cfloop from="1" to="#HowManyAttributes#" index="i" >
-						<cfset tempstr = {}>
-						<cfset tempstr["#reader.getAttributeLocalName(i-1)#"] =  reader.getAttributeValue(i-1)>
-						<cfset StructAppend(node_attributes, tempstr)>
+						<cfset StructAppend(str["node_attributes"], {"#reader.getAttributeLocalName(i-1)#" = reader.getAttributeValue(i-1)})>
 					</cfloop>
 				</cfif>
-				<cfset str["node_attributes"] = node_attributes>
 
 				<!--- If we're on the first "start element" then we can assume this is the root node. --->
 				<cfif countStartElements eq 1>
