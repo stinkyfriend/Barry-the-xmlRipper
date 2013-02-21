@@ -133,6 +133,8 @@
 		<cfset str["node_name"] = rootNode>
 
 		<cfset reader.close()>
+		<cfset bis.close()>
+		<cfset fis.close()>
 
 	</cffunction>
 </cfcomponent>
